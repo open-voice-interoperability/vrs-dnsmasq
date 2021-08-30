@@ -1,5 +1,8 @@
 usage:
 	@echo "usage: make [start|stop]"
 
+test:
+	dnsmasq --test --conf-file=dnsmasq.conf
+
 start:
-	dnsmasq --no-daemon --conf-file=dnsmasq.conf
+	dnsmasq --no-daemon --log-queries --conf-file=dnsmasq.conf
