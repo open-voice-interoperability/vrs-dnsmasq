@@ -12,13 +12,16 @@ leveraged to implement the [OVON Voice Registry System][vrs].
 ```sh
 make start
 
-# query SRV records
-dig @localhost -p 5353 SRV _vrs._tcp.ovon.org
-dig @localhost -p 5353 SRV _vrs._udp.ovon.org
-dig @localhost -p 5353 SRV target._vrs._tcp.ovon.org
+# Look up 'target' in VRS
+dig @localhost -p 5353 target.vrs TXT
 
-# query TXT records
-dig @localhost -p 5353 target.vrs.ovon.org TXT
-dig @localhost -p 5353 delta.vrs.ovon.org TXT
-dig @localhost -p 5353 103-305-503-122-501-135-302-319.ipa.vrs.ovon.org TXT
+# Look up /tɑːrˈʒeɪ/ in VRS using IPA encoding
+dig @localhost -p 5353 103-305-503-122-501-135-302-319.vrs TXT
+
+# Look up 'delta' in VRS
+dig @localhost -p 5353 delta.vrs TXT
+
+# Look up Target's VRS servers
+dig @localhost -p 5353 SRV _vrs._tcp.target.com
+
 ```
